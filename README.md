@@ -1,20 +1,31 @@
+
+> [!NOTE]
+> **AI-Generated Project**
+> This project is a complete AI-generated project, completed in just 3 hours.
+> 
+> **Tools Used:**
+> - **Gemini 3.1 Pro:** System architecture and prompt generation
+> - **Claude Sonnet 4.6:** Base code (Stage 1)
+> - **Antigravity:** Debugging and further stages
+                     
+
 # Pulse — AI Social Media Content Pipeline
 
-A full-stack AI-powered content generation platform built with Next.js 15, Prisma, NextAuth, and Google Gemini.
+A full-stack AI-powered content generation platform built with Next.js 16, Prisma, Auth.js v5, and Google Gemini.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS + custom design system
 - **Database**: Prisma ORM + SQLite (dev) / PostgreSQL (prod)
-- **Auth**: NextAuth.js v4 (Credentials provider)
-- **AI** *(Phase 2)*: Google Gemini 2.5 Flash + Imagen 3
-- **Export** *(Phase 4)*: Markdown, PDF (jsPDF), JSON
+- **Auth**: Auth.js v5 (Credentials provider)
+- **AI**: Google Gemini 2.5 Flash + Imagen 3
+- **Export**: Markdown, PDF (jsPDF), JSON
 
 ## Architecture
 
 ```
-ai-content-pipeline/
+pulse-app/
 ├── app/
 │   ├── (auth)/            # Login, Signup pages
 │   ├── (dashboard)/       # Protected dashboard routes
@@ -82,11 +93,18 @@ Visit [http://localhost:3000](http://localhost:3000)
 | Phase | Description | Status |
 |-------|-------------|--------|
 | **Phase 1** | Foundation, Auth, Dashboard | ✅ Complete |
-| **Phase 2** | AI Engine (Gemini + Imagen) | ⏳ Pending |
-| **Phase 3** | Content Feed, Edit, Schedule | ⏳ Pending |
-| **Phase 4** | Export System (MD/PDF/JSON) | ⏳ Pending |
+| **Phase 2** | AI Engine (Gemini + Imagen) | ✅ Complete |
+| **Phase 3** | Content Feed, Edit, Schedule | ✅ Complete |
+| **Phase 4** | Export System (MD/PDF/JSON) | ✅ Complete |
 
 ## Key Design Decisions
+
+- **Services layer**: All business logic lives in `services/`. API routes are thin — they only parse the request and delegate.
+- **Ownership checks**: Every service method verifies `userId` ownership before touching data.
+- **Consistent error types**: Services return `{ success: true, data } | { success: false, error }` — never throw to routes.
+- **Zod validation**: All user input is validated at the service boundary, not in the route.
+- **JWT sessions**: NextAuth uses JWT strategy — no extra DB round-trip per request.
+
 
 - **Services layer**: All business logic lives in `services/`. API routes are thin — they only parse the request and delegate.
 - **Ownership checks**: Every service method verifies `userId` ownership before touching data.
