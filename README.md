@@ -7,7 +7,8 @@
 > - **Gemini 3.1 Pro:** System architecture and prompt generation
 > - **Claude Sonnet 4.6:** Base code (Stage 1)
 > - **Antigravity:** Debugging and further stages
-                     
+>
+> *Security Notice: The Gemini API key has been removed from this repository for security reasons. Please generate and paste your own API key to run this project.*
 
 # Pulse — AI Social Media Content Pipeline
 
